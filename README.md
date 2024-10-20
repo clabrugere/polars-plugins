@@ -6,7 +6,7 @@ Demonstrates how to implement custom expressions on polars `Series` using their 
 
 We implement two custom operations:
 - a discounted cumulative sum that basically computes $y_{t+1} = \gamma * y_t + x_t$ with $y_0 = x_0$. This operation is sequential by nature and so cannot really be parallelized (expect if it runs on independent groups).
-- a feature hasher that applies the hashing trick to map strings to integers. This is very useful for online and large scale machine learning systems as it's usually a cheap operation, stateless and elegantly handle out of vocabulary modalities and missing values.
+- a feature hasher that applies the hashing trick to map strings to integers: $h(x) \text{ mod } N_{bucket}$. This is very useful for online and large scale machine learning systems as it's usually a cheap operation, stateless and elegantly handle out of vocabulary modalities and missing values.
 
 As recommended by the polars documentation, repos implementing extensions should have the following structure:
 
